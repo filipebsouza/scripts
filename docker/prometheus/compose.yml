@@ -1,0 +1,14 @@
+services:
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    ports:
+      - 9090:9090
+    restart: unless-stopped
+    volumes:
+      - ./data:/etc/prometheus
+      - prom_data:/data
+volumes:
+  prom_data:
